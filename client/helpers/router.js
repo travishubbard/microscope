@@ -10,12 +10,14 @@ Meteor.Router.add({
 });
 
 Meteor.Router.filters({
-	'requireLogin': function(page){
-		if(meteor.user())
+
+	'requireLogin': function(page) {
+		if (Meteor.user())
 			return page;
 		else
 			return 'accessDenied';
 	}
+	
 });
 
 Meteor.Router.filter('requireLogin', {only: 'postSubmit'});
