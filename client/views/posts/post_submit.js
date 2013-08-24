@@ -1,11 +1,11 @@
 Template.postSubmit.events({
-	'submit form': function(e) {
-		e.preventDefault();
+	'submit form': function(event) {
+		event.preventDefault();
 
 		var post = {
-			url: $(e.target).find('[name=url]').val(),
-			title: $(e.target).find('[name=title]').val(),
-			message: $(e.target).find('[name=message]').val()
+			url: $(event.target).find('[name=url]').val(),
+			title: $(event.target).find('[name=title]').val(),
+			message: $(event.target).find('[name=message]').val()
 		}
 
 		Meteor.call('post', post, function(error, id) {
@@ -16,10 +16,10 @@ Template.postSubmit.events({
 
 				// if the error is that the post already exists, take the user there
 				if (error.error === 302){
-					Meteor.router.to('postPage', error.details)
+					Meteor.Router.to('postPage', error.details)
 				}
 			} else {
-				Meteor.router.to('postPage', id)
+				Meteor.Router.to('postPage', id)
 			}
 		});
 	}
