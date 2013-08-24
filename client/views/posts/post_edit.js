@@ -29,7 +29,7 @@ Template.postEdit.events({
 	'click .delete': function(e){
 		e.preventDefault();
 
-		if (confirm("Delete this post?")) {
+		if (confirm("Delete this post?\n\nDeleting a post can not be undone.")) {
 			var currentPostId = Session.get('currentPostId');
 			Posts.remove(currentPostId);
 			Meteor.Router.to('postsList');
