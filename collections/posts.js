@@ -1,5 +1,12 @@
 Posts = new Meteor.Collection('posts');
 
+// allow methods for client side mods
+Posts.allow({
+	update: ownsDocument,
+	remove: ownsDocument
+});
+
+// methods that run on the server
 Meteor.methods({
 	post: function(postAttributes){
 		var user = Meteor.user(),
