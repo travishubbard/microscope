@@ -10,10 +10,17 @@ Template.postSubmit.events({
 
 		Meteor.call('post', post, function(error, id) {
 
-			if(error)
-				return alert(error.reason);
-			
-			Meteor.Router.to('postPage', id);
+			if(error) {
+				//display the error to the user
+				throwError(error.reason);
+
+				// if the error is that the post already exists, take the user there
+				if (error.error === 302){
+					Meteor.router.to('postPage', error.details)
+				}
+			} else {
+				Meteor.router.to('postPage', id)
+			}
 		});
 	}
 });
