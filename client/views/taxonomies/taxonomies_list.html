@@ -1,0 +1,56 @@
+<template name="taxonomiesList">
+	<div class="posts">
+	  <h1>Taxonomy Filter</h1>
+	</div>
+	<div class="posts">
+		<table id="taxonomy_datatable">
+			<thead>
+				<th></th>
+				<th>Code</th>
+				<th>Type</th>
+				<th>Classification</th>
+				<th>Specialization</th>
+			</thead>
+			<tbody>
+				{{#each taxonomies}}
+					<tr>
+						<td><input type="checkbox" name="taxonomies" value="{{code}}"></td>
+						<td>{{code}}</td>
+						<td>{{type}}</td>
+						<td>{{classification}}</td>
+						<td>{{specialization}}</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+	<div class="posts">
+	  <h1>NPI Search Options</h1>
+	</div>
+	<form class="main">
+		<div class="control-group">
+			<div class="controls">
+				<input type="checkbox" name="vehicle" value="organizations">&nbsp;Organizations<br>
+				<input type="checkbox" name="vehicle" value="individuals">&nbsp;Individuals 
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="state">State</label>
+			<div class="controls">
+				<select name="state">
+					<option value="md">Maryland</option>
+					<option value="va">Virginia</option>
+					<option value="nc">North Carolina</option>
+					<option value="sc">South Carolina</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<div class="controls">
+				<input type="submit" value="Submit" class="btn btn-primary" />
+			</div>
+		</div>
+	</form>	
+</template>

@@ -11,7 +11,9 @@ Meteor.Router.add({
 		and: function(id) { Session.set('currentPostId', id); }
 	},
 
-	'/submit': 'postSubmit'
+	'/submit': 'postSubmit',
+
+	'/taxonomy': 'taxonomiesList'
 });
 
 Meteor.Router.filters({
